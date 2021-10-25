@@ -61,8 +61,8 @@ int pow(int number, int base){
 string complexity(int size, int dominant_operations){
     string time_complexity = "O(0)";
 
-    if(dominant_operations < size) time_complexity = "O(1)";
-    else if(dominant_operations <= size) time_complexity = "O(n)";
+    if(dominant_operations < size-1) time_complexity = "O(1)";
+    else if(dominant_operations <= size-1) time_complexity = "O(n)";
     else if(dominant_operations <= pow(size,2)) time_complexity = "O(n^2)";
     else if(dominant_operations <= pow(2, size)) time_complexity = "O(2^n)";
     else if (dominant_operations <= factorial(size)) time_complexity  = "O(n!)";
@@ -147,12 +147,10 @@ int main(){
         rand_array[i] = x; 
     }
    
-    // int array[] = {13, 10, 2, 7, 11, 4, 3, 6, 15, 17};
-    int sorted_array[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    int args[2];
 
     int size = sizeof(rand_array)/sizeof(rand_array[0]);
 
+    cout<<"-------------------Przypadek tablicy z losowymi danymi------------------"<<endl;
 
     cout<<"Tablica przed posortowaniem: ";
         print_array(rand_array, size);
@@ -166,21 +164,68 @@ int main(){
     cout<< endl;
 
     cout<< "Operacje dominujace: "<< dominant_operation << endl;
-    string time_complexity = complexity(size, dominant_operation);
-    cout<< "Dla tej tablicy algorytm ma zlozonosc czasowa rowna: "<< time_complexity << endl;
 
-    // cout<<"----------------Pesymistyczny przypadek----------------"<<endl;;
+    string time_complexity = complexity(size, dominant_operation);
+
+    cout<< "Czy liczba operacji dominujacych zgadza sie z oszacowaniem:"<<endl;
+   
+    if(dominant_operation < pow(SIZE_OF_ARRAY,2)){
+        cout<< "Tak, bo "<< dominant_operation << " < " << pow(SIZE_OF_ARRAY,2)<<endl;
+    } else {
+        cout<< "Nie, bo "<< dominant_operation << " > " << pow(SIZE_OF_ARRAY,2)<<endl;
+    }
+    cout<< "Dla tego zestawu danych algorytm ma zlozonosc czasowa rowna: "<< time_complexity << endl;
+    cout<<"------------------------------------------------------------------------"<<endl<<endl;
+    
+    
+    cout<<"-----------------Przypadek tablicy z posortowanymi danymi---------------"<<endl;
+
+    int sorted_array[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+    cout<<"Tablica przed posortowaniem: ";
+        print_array(sorted_array, size);
+    cout<<endl;
+
+    dominant_operation = insertion_sort(sorted_array, size);
+
+
+    cout<<"Posortowana tablica: ";
+        print_array(sorted_array, size);
+    cout<< endl;
+
+    cout<< "Operacje dominujace: "<< dominant_operation << endl;
+
+    time_complexity = complexity(size, dominant_operation);
+
+    cout<< "Czy liczba operacji dominujacych zgadza sie z oszacowaniem:"<<endl;
+   
+    if(dominant_operation < pow(SIZE_OF_ARRAY,2)){
+        cout<< "Tak, bo "<< dominant_operation << " < " << pow(SIZE_OF_ARRAY,2)<<endl;
+    } else {
+        cout<< "Nie, bo "<< dominant_operation << " > " << pow(SIZE_OF_ARRAY,2)<<endl;
+    }
+    cout<< "Dla tego zestawu danych algorytm ma zlozonosc czasowa rowna: "<< time_complexity << endl;
+    cout<<"------------------------------------------------------------------------"<<endl<<endl;
+    
+    
+    
+    cout<<"-------------------------Pesymistyczna zlozonosc-------------------------"<<endl;
     string O_pesimistic = pesimistic_complexity(SIZE_OF_ARRAY); 
     cout<<"Pesymistyczna zlozonosc czasowa algorytmu: "<< O_pesimistic << endl;;
-    // int pesimistic_args[2];
-    // copy_array(args, pesimistic_args, 2);
-    // cout<<"-------------------------------------------------------"<<endl;
+
+    cout<<"-----------------------------------------------------------------------"<<endl<<endl;
+
+
+    cout<<"----------------------------Srednia zlozonosc---------------------------"<<endl;
     string O_average = average_complexity(SIZE_OF_ARRAY);
     cout<<"Srednia zlozonosc czasowa algorytmu: " << O_average <<endl;
+    cout<<"------------------------------------------------------------------------"<<endl<<endl;
     // int average_args[2];
     // copy_array(args, average_args, 2);
 
-    cout<<"Miara wrazliwosci sredniej: "<< pessimistic_sensitivity(O_pesimistic, O_average)<<endl;;
+    cout<<"----------------------------Miara wrazliwosci---------------------------"<<endl;
+    cout<<"Miara wrazliwosci pesymistycznej: "<< pessimistic_sensitivity(O_pesimistic, O_average)<<endl;;
+    cout<<"------------------------------------------------------------------------"<<endl<<endl;
 
 }
 
