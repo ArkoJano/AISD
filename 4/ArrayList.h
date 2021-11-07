@@ -29,4 +29,7 @@ class ArrayList : public List {
         bool push_back(int element);
         bool pop_front();
         bool pop_back();
+        void del_all(int element);
+        void del_duplicates(int element);
+        void reverse();
 };

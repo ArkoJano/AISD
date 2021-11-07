@@ -5,8 +5,8 @@ using namespace std;
 int main(){
     ArrayList array{5};
     cout << "Empty places: "<< array.emptyPlaces() <<endl;
-    array.insert(0, 0);
-    cout<<"insert(0,0)"<<endl;
+    array.insert(0, 1);
+    cout<<"insert(0, 1)"<<endl;
     array.print();
     cout << "Empty places: "<< array.emptyPlaces() <<endl;
     array.insert(1, 1);
@@ -67,7 +67,7 @@ int main(){
     cout << "--------------------------------------------"<<endl;
     }
 
-    cout << "--------------- Push_back -----------------"<<endl;
+    cout << "---------------- Push_back -----------------"<<endl;
     cout << "push_front(5):" << array.push_back(5) <<endl;
     array.print();
     cout << "Empty places: "<< array.emptyPlaces() <<endl;
@@ -75,7 +75,7 @@ int main(){
     cout << "last_position:" << array.last() <<endl;
     cout << "--------------------------------------------"<<endl;
 
-    cout << "--------------- pop_front -----------------"<<endl;
+    cout << "---------------- pop_front -----------------"<<endl;
     cout << "pop_front(5):" << array.pop_front() <<endl;
     array.print();
     cout << "Empty places: "<< array.emptyPlaces() <<endl;
@@ -83,7 +83,7 @@ int main(){
     cout << "last_position:" << array.last() <<endl;
     cout << "--------------------------------------------"<<endl;
 
-    cout << "--------------- pop_back -----------------"<<endl;
+    cout << "----------------- pop_back -----------------"<<endl;
     cout << "pop_back(5):" << array.pop_back() <<endl;
     array.print();
     cout << "Empty places: "<< array.emptyPlaces() <<endl;
@@ -91,5 +91,51 @@ int main(){
     cout << "last_position:" << array.last() <<endl;
     cout << "--------------------------------------------"<<endl;
 
+    cout << "--------------- del_all(1s) ----------------"<<endl;
+    array.del_all(1);
+    array.print();
+    cout << "Empty places: "<< array.emptyPlaces() <<endl;
+    cout<< "Array size: "<< array.getSize()<<endl;
+    cout << "last_position:" << array.last() <<endl;
+    cout << "--------------------------------------------"<<endl;
 
+    cout << "------------- del_dupicates(5) -------------"<<endl;
+    array.del_duplicates(5);
+    array.print();
+    cout << "Empty places: "<< array.emptyPlaces() <<endl;
+    cout<< "Array size: "<< array.getSize()<<endl;
+    cout << "last_position:" << array.last() <<endl;
+    cout << "----------------------------------- --------"<<endl;
+
+    cout << "----------------- reverse ------------------"<<endl;
+    array.reverse();
+    array.print();
+    cout << "Empty places: "<< array.emptyPlaces() <<endl;
+    cout<< "Array size: "<< array.getSize()<<endl;
+    cout << "last_position:" << array.last() <<endl;
+    cout << "--------------------------------------------"<<endl;
+
+    cout << "------------ del_dupicates(2) --------------"<<endl;
+    array.del_duplicates(2);
+    array.print();
+    cout << "Empty places: "<< array.emptyPlaces() <<endl;
+    cout<< "Array size: "<< array.getSize()<<endl;
+    cout << "last_position:" << array.last() <<endl;
+    cout << "--------------------------------------------"<<endl;
+
+    cout << "--------------- del_all(4) -----------------"<<endl;
+    array.del_all(4);
+    array.print();
+    cout << "Empty places: "<< array.emptyPlaces() <<endl;
+    cout<< "Array size: "<< array.getSize()<<endl;
+    cout << "last_position:" << array.last() <<endl;
+    cout << "--------------------------------------------"<<endl;
+
+    cout << "------------- del_dupicates(3) -------------"<<endl;
+    array.del_duplicates(3);
+    array.print();
+    cout << "Empty places: "<< array.emptyPlaces() <<endl;
+    cout<< "Array size: "<< array.getSize()<<endl;
+    cout << "last_position:" << array.last() <<endl;
+    cout << "--------------------------------------------"<<endl;
 }

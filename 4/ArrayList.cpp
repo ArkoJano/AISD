@@ -177,3 +177,34 @@ bool ArrayList::pop_back() {
     remove(last_position);
     return true;
 }
+
+void ArrayList::del_all(int element){
+    for(int i=0;i<size;i++){
+        if( array[i] == element ){
+            remove(i);
+        }
+    }
+}
+
+void ArrayList::del_duplicates(int element){
+    int counter = 0;
+    for(int i=0;i<size;i++){
+        if( array[i] == element ){
+            if(counter != 0) {
+                remove(i);
+                i--;
+            }
+        counter++;                       
+        }
+
+    }
+}
+
+void ArrayList::reverse(){
+    int tmp;
+    for(int i=0; i<size/2;i++){
+        tmp = array[i];
+        array[i] = array[size - 1 - i];
+        array[size - 1 - i] = tmp;
+    }
+}
