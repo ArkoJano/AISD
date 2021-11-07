@@ -49,8 +49,12 @@ void ArrayList::reSize(){
 
 bool ArrayList::insert(int index, int element){
     
-    if(index >= size){
+    while(index >= size){
         reSize();
+    }
+
+    for(int i=size-1; i>index; i--){
+        array[i] = array[i-1];
     }
 
     int if_empty = array[index];
@@ -66,11 +70,13 @@ bool ArrayList::insert(int index, int element){
         last_position = index;
     }
 
-    for(int i=index+1; i<size; i++){
+    // for(int i=index+1; i<size; i++){
         
-        tmp = array[i];
-        array[i] = tmp;
-    }
+    //     tmp = array[i];
+    //     array[i] = tmp;
+    // }
+
+  
 
     if(array[index] == element) {
         if( if_empty == 0){
@@ -207,4 +213,6 @@ void ArrayList::reverse(){
         array[i] = array[size - 1 - i];
         array[size - 1 - i] = tmp;
     }
+    last_position = size - first_position - 1 ;
+    first_position = size - last_position - 1;
 }
