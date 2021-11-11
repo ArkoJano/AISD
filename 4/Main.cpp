@@ -77,6 +77,7 @@ int main(){
     array.print();
     cout << "Empty places: "<< array.emptyPlaces() <<endl;
     cout<< "Array size: "<< array.getSize()<<endl;
+    cout << "first_position:" << array.first() <<endl;
     cout << "last_position:" << array.last() <<endl;
     cout << "--------------------------------------------"<<endl;
     }
@@ -86,6 +87,7 @@ int main(){
     array.print();
     cout << "Empty places: "<< array.emptyPlaces() <<endl;
     cout<< "Array size: "<< array.getSize()<<endl;
+    cout << "first_position:" << array.first() <<endl;
     cout << "last_position:" << array.last() <<endl;
     cout << "--------------------------------------------"<<endl;
 
@@ -94,6 +96,7 @@ int main(){
     array.print();
     cout << "Empty places: "<< array.emptyPlaces() <<endl;
     cout<< "Array size: "<< array.getSize()<<endl;
+    cout << "first_position:" << array.first() <<endl;
     cout << "last_position:" << array.last() <<endl;
     cout << "--------------------------------------------"<<endl;
 
@@ -102,6 +105,7 @@ int main(){
     array.print();
     cout << "Empty places: "<< array.emptyPlaces() <<endl;
     cout<< "Array size: "<< array.getSize()<<endl;
+    cout << "first_position:" << array.first() <<endl;
     cout << "last_position:" << array.last() <<endl;
     cout << "--------------------------------------------"<<endl;
 
@@ -110,6 +114,7 @@ int main(){
     array.print();
     cout << "Empty places: "<< array.emptyPlaces() <<endl;
     cout<< "Array size: "<< array.getSize()<<endl;
+    cout << "first_position:" << array.first() <<endl;
     cout << "last_position:" << array.last() <<endl;
     cout << "--------------------------------------------"<<endl;
 
@@ -118,6 +123,7 @@ int main(){
     array.print();
     cout << "Empty places: "<< array.emptyPlaces() <<endl;
     cout<< "Array size: "<< array.getSize()<<endl;
+    cout << "first_position:" << array.first() <<endl;
     cout << "last_position:" << array.last() <<endl;
     cout << "----------------------------------- --------"<<endl;
 
@@ -126,6 +132,7 @@ int main(){
     array.print();
     cout << "Empty places: "<< array.emptyPlaces() <<endl;
     cout<< "Array size: "<< array.getSize()<<endl;
+    cout << "first_position:" << array.first() <<endl;
     cout << "last_position:" << array.last() <<endl;
     cout << "--------------------------------------------"<<endl;
 
@@ -134,6 +141,7 @@ int main(){
     array.print();
     cout << "Empty places: "<< array.emptyPlaces() <<endl;
     cout<< "Array size: "<< array.getSize()<<endl;
+    cout << "first_position:" << array.first() <<endl;
     cout << "last_position:" << array.last() <<endl;
     cout << "--------------------------------------------"<<endl;
 
@@ -142,6 +150,7 @@ int main(){
     array.print();
     cout << "Empty places: "<< array.emptyPlaces() <<endl;
     cout<< "Array size: "<< array.getSize()<<endl;
+    cout << "first_position:" << array.first() <<endl;
     cout << "last_position:" << array.last() <<endl;
     cout << "--------------------------------------------"<<endl;
 
@@ -150,6 +159,7 @@ int main(){
     array.print();
     cout << "Empty places: "<< array.emptyPlaces() <<endl;
     cout<< "Array size: "<< array.getSize()<<endl;
+    cout << "first_position:" << array.first() <<endl;
     cout << "last_position:" << array.last() <<endl;
     cout << "--------------------------------------------"<<endl;
 }

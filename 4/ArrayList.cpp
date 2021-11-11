@@ -29,22 +29,19 @@ int ArrayList::emptyPlaces(){
 }
 
 void ArrayList::reSize(){
+
+    empty_places += size;
+    size *= 2;
     int* tmp = new int[size];
-        for(int i=0; i<size; i++){
-            tmp[i] = array[i];
-        } 
+    for(int i=0; i<(size/2); i++){
+        tmp[i] = array[i];
+    } 
+    for(int i=size/2; i<size; i++){
+        tmp[i] = 0;
+    }
+    delete[] array;
+    array = tmp;    
 
-        empty_places += size;
-        size *= 2;
-        array = new int[size];
-
-        for(int i=0; i<size/2; i++){
-            array[i] = tmp[i];
-        }
-
-        
-
-        delete[] tmp;
 }
 
 bool ArrayList::insert(int index, int element){
@@ -69,13 +66,6 @@ bool ArrayList::insert(int index, int element){
     if(index > last_position){
         last_position = index;
     }
-
-    // for(int i=index+1; i<size; i++){
-        
-    //     tmp = array[i];
-    //     array[i] = tmp;
-    // }
-
   
 
     if(array[index] == element) {
@@ -91,7 +81,7 @@ bool ArrayList::insert(int index, int element){
 
 bool ArrayList::remove(int index){
     
-    for(int i=index; i<size; i++){
+    for(int i=index; i<=last_position; i++){
         array[i] = array[i+1];
     }
     empty_places++;
@@ -213,6 +203,7 @@ void ArrayList::reverse(){
         array[i] = array[size - 1 - i];
         array[size - 1 - i] = tmp;
     }
+    tmp = last_position;
     last_position = size - first_position - 1 ;
-    first_position = size - last_position - 1;
+    first_position = size - tmp - 1;
 }
