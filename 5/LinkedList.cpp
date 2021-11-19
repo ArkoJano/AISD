@@ -91,7 +91,18 @@ int LinkedList::retrieve(int index){
     if(tmp != nullptr) return tmp->value;
     else return -1;
 };
-int LinkedList::locate(int element){};
+int LinkedList::locate(int element){
+    Node* tmp = header;
+    int i = 0;
+    while(tmp->value != element){
+        // std::cout<<tmp->value<<std::endl;
+        tmp = move_to_index(i);
+        if(tmp == nullptr) return -1;
+        i++;
+    }
+
+    return i;
+};
 bool LinkedList::empty(){};
 int LinkedList::first(){}; // jesli nie ma elementu to nullptr
 int LinkedList::front(){};
