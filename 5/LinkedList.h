@@ -24,16 +24,19 @@ class LinkedList : public List {
         int retrieve(int index);
         int locate(int element);
         bool empty();
-        int first(); // jesli nie ma elementu to nullptr
+        Node* first(); // jesli nie ma elementu to nullptr
         int front();
-        int last();
+        Node* last();
         int back();
+        int len();
         bool push_front(int element);
         bool push_back(int element);
         bool pop_front();
         bool pop_back();
+        void del_array();
         void del_all(int element);
         void del_duplicates(int element);
         void reverse();
+        void del_odd_indexes();
 
 };
