@@ -15,8 +15,6 @@ class List {
         virtual bool remove(int index) = 0;
         virtual int retrieve(int index) = 0;
         virtual int locate(int index) = 0;
-        virtual int first() = 0;
-        virtual int last() = 0;
         virtual int back() = 0;
         virtual bool push_front(int element) = 0;
         virtual bool push_back(int element) = 0;

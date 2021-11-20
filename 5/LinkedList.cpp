@@ -73,45 +73,208 @@ bool LinkedList::insert(int index, int element){
 }
 
 bool LinkedList::remove(int index){
-    Node *previous = move_to_index(index-1);
-    Node *tmp = previous->next;
-    previous->next = tmp->next;
-    if(move_to_index(index) != tmp){
-        size--;
-        delete[] tmp;
-        return true;
+
+    if(!empty()){
+        if(index != 0){
+            Node *previous = move_to_index(index-1);
+            Node *tmp = previous->next;
+            previous->next = tmp->next;
+            if(move_to_index(index) != tmp){
+                size--;
+                delete[] tmp;
+                return true;
+            } else {
+                delete[] tmp;
+                return false;
+            }
+        
+        } else {
+            Node* tmp = header->next;
+            delete[] header;
+            header = tmp;
+            size--;
+            return true;
+        }
     } else {
-        delete[] tmp;
         return false;
     }
 
 };
 int LinkedList::retrieve(int index){
-    Node* tmp = move_to_index(index);
-    if(tmp != nullptr) return tmp->value;
-    else return -1;
+    if(!empty()){
+        Node* tmp = move_to_index(index);
+        if(tmp != nullptr) return tmp->value;
+        else return -1; 
+    } 
+    return -1;
 };
 int LinkedList::locate(int element){
-    Node* tmp = header;
-    int i = 0;
-    while(tmp->value != element){
-        // std::cout<<tmp->value<<std::endl;
-        tmp = move_to_index(i);
-        if(tmp == nullptr) return -1;
-        i++;
+    if(!empty()){
+        Node* tmp = header;
+        int i = 0;
+        while(tmp->value != element){
+            tmp = move_to_index(i);
+            if(tmp == nullptr) return -1;
+            i++;
+        }
+    if(i == 0) return 0;
+    return i-1;
     }
-
-    return i;
+    return -1;
 };
-bool LinkedList::empty(){};
-int LinkedList::first(){}; // jesli nie ma elementu to nullptr
-int LinkedList::front(){};
-int LinkedList::last(){};
-int LinkedList::back(){};
-bool LinkedList::push_front(int element){};
-bool LinkedList::push_back(int element){};
-bool LinkedList::pop_front(){};
-bool LinkedList::pop_back(){};
-void LinkedList::del_all(int element){};
-void LinkedList::del_duplicates(int element){};
-void LinkedList::reverse(){};
+bool LinkedList::empty(){
+    if (header == nullptr) return true;
+    return false;
+};
+// jesli nie ma elementu to nullptr
+LinkedList::Node* LinkedList::first(){
+    if(!empty()) return header;
+    else return nullptr;
+
+}; 
+int LinkedList::front(){
+    if(!empty()) return header->value;
+    else return -1;
+};
+LinkedList::Node* LinkedList::last(){
+    if(!empty()) {
+        Node* tmp = move_to_index(getSize()-1);
+        return tmp;
+    }
+    else return nullptr;
+};
+int LinkedList::back(){
+    if(!empty()) {
+        Node* tmp = move_to_index(getSize()-1);
+        return tmp->value;
+    }
+    else return -1;
+};
+int LinkedList::len(){
+    return getSize();
+}
+bool LinkedList::push_front(int element){
+    return insert(0, element);
+};
+bool LinkedList::push_back(int element){
+     return insert(getSize(), element);
+};
+bool LinkedList::pop_front(){
+    return remove(0);
+};
+bool LinkedList::pop_back(){
+    return remove(getSize()-1);
+};
+void LinkedList::del_array(){
+     if(!empty()){
+        int i = getSize();
+        while(i != 0){
+            Node* tmp = header;
+            header = header->next;
+            i--;
+            delete[] tmp;
+            size--;
+        }
+
+    }
+};
+
+void LinkedList::del_all(int element){
+    if(!empty()){
+        while(locate(element) != -1){
+            int index = locate(element);
+            remove(index);
+        }
+
+    }
+};
+
+void LinkedList::del_duplicates(int element){
+   if(!empty()){
+        Node* tmp = header;
+        int i = 0, counter = 0;
+        while(tmp != nullptr){
+            if(tmp->value == element){
+                if(counter == 0) { 
+                    counter++;
+                } else {
+                    remove(i);
+                }
+            }
+            tmp = tmp->next;
+            i++;
+        }
+        delete[] tmp;
+   }
+};
+void LinkedList::reverse(){
+    Node* tmp = header;
+    Node* next = nullptr;
+    Node* prev = nullptr;
+    while(tmp != nullptr){
+        next = tmp->next;
+        tmp->next = prev;
+        prev = tmp;
+        tmp = next;
+    }
+    header = prev;
+
+    delete[] tmp, next, prev;
+
+};
+
+// void LinkedList::del_odd_indexes(){
+//     if(!empty()){
+//         Node* tmp = header;
+//         Node* prev = nullptr;
+//         Node* next = tmp->next;
+//         int counter = 0;
+//         while(tmp != nullptr){
+//             if(counter % 2 == 0){
+
+//             }
+//     }
+// }
+
+void LinkedList::del_odd_indexes(){
+    Node* tmp = header;
+    Node* prev = nullptr;
+
+    int i = 0, counter = 0;
+    while(tmp != nullptr){
+        
+        if(counter % 2 == 0) { 
+            if(counter != 0){
+                prev->next = tmp->next;
+                delete[] tmp;
+                tmp = prev->next;
+
+            } else {
+                header = header->next;
+                delete[] tmp;
+                tmp = header;
+            }
+            size--;
+        } else {
+
+            prev = tmp;
+            tmp = tmp->next;
+        }
+        counter++;
+        // std::cout<< "prev: " << prev->value << " tmp: " << tmp->value <<std::endl;
+    }
+    // delete[] tmp;
+}
+
+// void LinkedList::del_odd_indexes(){
+//     if(!empty()){
+//         int i = 0;
+//         while(i <= getSize()){
+//             if(i % 2 == 0){
+//                 remove(locate(move_to_index(i)->value));
+//                 i--;
+//             }
+//             i++;
+//         }
+//     }
+// }
